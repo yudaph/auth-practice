@@ -2,43 +2,43 @@ version: '3.1'
 
 services:
   #items microservice
-  items:
+  user:
     build: ./Task
     restart: 'always'
     ports:
       - '8080:80'
     environment:
       APP_PORT: 80
-      MYSQL_HOST: lemo-mysql
+      MYSQL_HOST: mysql
       MYSQL_PORT: 3306
-      MYSQL_USERNAME: lemo
+      MYSQL_USERNAME: username
       MYSQL_PASSWORD: mycurrentpassword
-      MYSQL_NAME: lemonilo
+      MYSQL_NAME: users
     networks:
-      - lemo-net
+      - net
     depends_on:
-      - lemo-mysql
+      - mysql
 
   #mysql database
-  lemo-mysql:
+  mysql:
     image: mysql
     ports:
       - '3306:3306'
     command: --init-file /data/application/init.sql
     volumes:
       - ./MySQL/init.sql:/data/application/init.sql
-      - lemo_mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: lemonilo
-      MYSQL_USER: lemo
+      MYSQL_DATABASE: users
+      MYSQL_USER: username
       MYSQL_PASSWORD: mycurrentpassword
       MYSQL_ROOT_PASSWORD: mycurrentpassword
     networks:
-      - lemo-net
+      - net
 
 volumes:
-  lemo_mysql:
+  mysql:
 
 networks:
-  lemo-net:
+  net:
     driver: bridge

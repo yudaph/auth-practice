@@ -1,7 +1,5 @@
 # Cara Installasi
 
-Extract source dari `lemonilo.zip`
-
 ## Jika Menggunakan Docker
 
 1. Install Docker
