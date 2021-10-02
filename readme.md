@@ -30,7 +30,7 @@
    MYSQL_PASSWORD=
    MYSQL_HOST=localhost
    MYSQL_PORT=3306
-   MYSQL_NAME=lemonilo
+   MYSQL_NAME=users
    ```
 
 3. Aktifkan godotenv
